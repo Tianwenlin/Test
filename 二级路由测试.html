@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="box">
+    <router-link to="/news">新闻</router-link>
+    <router-link to="/hots">热点</router-link>
+    <router-link to="/mine">我的</router-link>
+    <router-view></router-view>
+    <br>
+    <span v-bind:title="message">属表悬停加载时间</span><br>
+    <span v-if='seen'>现在你能看见我了:{{seen}}</span>
+    <p>{{name}}</p>
+    <input v-model="name">
+    <sss>{{msg}}</sss>
+    <button @click="count+=1">add+1</button>
+    <p>现在的数字是{{count}}</p>
+    <p>{{ message }}</p>
+    <button @click="say('Hi')">say Hi</button>
+    <button v-on:click="reverseMessage">反转消息</button>
+    <h2 v-for="(p,index) in person">{{p.name}}-{{p.age}}-{{p.address}}
+    <button @click="updateP(index,{name:'帕奎奥',age:38,address:'菲律宾'})">更新</button><button @click="deleteP(index)">删除</button></h2>
+</div>
+<template id="tmpl">
+    <div>
+        <h1>这是中央一套新闻联播</h1>
+        <ul>
+            <li>12345</li>
+            <li>56789</li>
+        </ul>
+    </div>
+</template>
+<template id="tml">
+    <div>
+        <h1>这是一个自定义组件</h1>
+        <h3>{{msg}}</h3>
+    </div>
+</template>
+<script>
+    var News = Vue.extend({
+        template:'#tmpl'
+    })
+    var Hots = Vue.extend({
+        template:'<h2>微博热搜</h2>'
+    })
+    var Mine = Vue.extend({
+        template:'<h2>我的</h2>'
+    })
+    var router = new VueRouter({
+        routes:[
+            {path:'/news',component:News},
+            {path:'/hots',component:Hots},
+            {path:'/mine',component:Mine}
+        ]
+    })
+    Vue.component('sss',{
+        template:"#tml",
+        data:function () {
+            return{
+                msg:'12345678'
+            }
+        }
+    })
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            count:0,
+            message:'时间'+':'+new Date().toLocaleString(),
+            seen:true,
+            name:'宾夕法尼亚大学',
+            person:[
+                {name:'阿里',age:76,address:'美国'},
+                {name:'泰森',age:58,address:'美国'},
+                {name:'梅威瑟',age:30,address:'美国'}
+            ]
+        },
+        router,
+        methods:{
+            reverseMessage:function () {
+                this.message = this.message.split('').reverse().join('')
+            },
+            deleteP(index) {
+                this.person.splice(index,1)
+            },
+            updateP(index,news){
+                this.person.splice(index,1,news)
+            },
+
+            say:function (message) {
+              alert(message)
+            }
+
+
+        }
+    })
+</script>
+</body>
+</html>
