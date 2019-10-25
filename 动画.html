@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        /*显示和隐藏的过滤效果*/
+        .xxx-enter-active,.xxx-leave-active{
+            transition: opacity 1s;
+        }
+        /*隐藏时的样式*/
+        .xxx-enter,.xxx-leave-to{
+            opacity: 0;
+        }
+        /*显示的过滤效果*/
+        .move-enter-active{
+            transition: all 1s;
+        }
+
+        /*隐藏的过滤效果*/
+        .move-leave-active{
+            transition: all 3s;
+        }
+        /*隐藏时的样式*/
+        .move-enter,.move-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+<button @click="isShow=!isShow">toggle</button>
+    <transition name="xxx">
+        <p v-show="isShow">hello</p>
+    </transition>
+
+</div>
+<div id="demo2">
+    <button @click="isShow=!isShow">toggle</button>
+    <transition name="move">
+        <p v-show="isShow" class="xxx-enter-to">hello</p>
+    </transition>
+
+</div>
+<script>
+    new Vue({
+        el:"#demo",
+        data(){
+            return{
+                isShow:true
+            }
+        }
+    })
+    new Vue({
+        el:"#demo2",
+        data(){
+            return{
+                isShow:true
+            }
+        }
+    })
+</script>
+</body>
+</html>

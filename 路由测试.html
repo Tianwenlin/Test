@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        #show{
+            width: 200px;height: 200px;background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+<router-link to="/news">news</router-link>
+<router-link to="/hot">hot</router-link>
+<router-link to="/mine">mine</router-link>
+    <div id="show">
+        <router-view></router-view>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#box",
+        data: {},
+        methods: {},
+        router: new VueRouter({
+            routes: [
+                {
+                    path: "/news", component: {
+                        template: '<h1>新闻</h1>'
+                    }
+                },
+                {
+                    path: "/hot", component: {
+                        template:' <h1>热点</h1>'
+                    }
+
+                },
+                {
+                    path:"/mine", component:{
+                        template:"<h1>我的</h1>"
+                    }
+                }
+            ]
+        })
+    })
+</script>
+</body>
+</html>

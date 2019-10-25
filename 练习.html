@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="box">
+    <p>{{all}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            first:'迈克尔',
+            last:'泰森'
+        },
+        computed:{
+            all:function () {
+                return this.first+''+this.last
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="box">
+    <com></com>
+</div>
+<template id="tmpl">
+    <div>
+        <h1>567890</h1>
+        <H2>{{msg}}</H2>
+    </div>
+</template>
+<script>
+    Vue.component('com',{
+        template:"#tmpl",
+        data:function () {
+            return{
+                msg:'09876543'
+            }
+        }
+    })
+    var vm =new Vue({
+        el:'#box',
+        data:{},
+        methods:{},
+
+    })
+</script>
+</body>
+</html>

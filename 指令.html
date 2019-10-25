@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+<p ref="content">baidu.com</p>
+    <button @click="hint">提示</button>
+    <p v-clock>{{msg}}</p>
+</div>
+<script>
+    new Vue({
+        el:"#demo",
+        data:{
+            mag:'百度'
+        },
+        methods:{
+            hint(){
+                //得到p标签的内容
+                alert(this.$refs.content.textContent)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

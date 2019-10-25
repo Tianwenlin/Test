@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+   <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+</head>
+<body>
+<div id="demo">
+    <h2>显示格式化日期时间</h2>
+    <p>{{date}}</p>
+    <p>完整：{{date | dateStr}}</p>
+</div>
+<script>
+    Vue.filter('dateStr',function (value) {
+
+        return moment(value).format('YYYY-MM-DD HH:mm:ss')
+    })
+    new Vue({
+        el:'#demo',
+        date:{
+            date:new Date()
+        }
+    })
+</script>
+</body>
+</html>
